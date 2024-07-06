@@ -53,7 +53,7 @@ function Quiz() {
     }
 
   return (
-    <main className="h-screen w-screen pt-24 flex justify-between gap-2 overflow-hidden">
+    <main className="h-screen w-screen pt-24 flex justify-between gap-2 overflow-x-hidden">
       <motion.div className="Image w-1/2 h-full fixed"
       initial={{opacity:0}}
       animate={{opacity: 1}}
