@@ -28,7 +28,7 @@ function Home() {
           animate={{opacity: 1, position:0}}
           transition={{duration:0.5, delay:1.8}}
           >
-          <Link to={"/quiz"}>
+          <Link to={"quiz"}>
           <button 
           className='bg-yellow-200 text-black p-6 rounded-full text-xl hover:shadow-md hover:shadow-yellow-100 hover:-translate-y-2 transition-all'>Wanna Try Me ? <i className="fa-solid fa-arrow-right fa-bounce"></i></button>
           </Link>

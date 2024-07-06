@@ -66,7 +66,7 @@ function Quiz() {
             >
               <div>Your score is {score}</div>
               <div>
-                <a href="/quiz">
+                <a href="quiz">
                   <button className="rounded-xl border border-black bg-yellow-200 p-2">
                     Try Again?
                   </button>
