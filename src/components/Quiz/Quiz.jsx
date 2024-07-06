@@ -4,12 +4,12 @@ import { useLoaderData, useOutletContext, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Quiz() {
-
+    const scoreImageUrl = "https://th.bing.com/th/id/R.fed0f2f592729b961dce67f0dd6e5f9c?rik=Ro5huxQvq5TI7w&riu=http%3a%2f%2fcliparting.com%2fwp-content%2fuploads%2f2016%2f10%2fThinking-clip-art-6.jpg&ehk=ESLre0SSYsS8xT%2fHMLydR90bPHl%2b9EEROXiDiyEjFJI%3d&risl=&pid=ImgRaw&r=0"
     const data = useLoaderData();
 
-    const {score, questionsAnswered}  = useOutletContext();
+    const {score, setScore, questionsAnswered, setQuestionsAnswered}  = useOutletContext();
 
-    const [scoreImage, setScoreImage] = useState("https://th.bing.com/th/id/R.fed0f2f592729b961dce67f0dd6e5f9c?rik=Ro5huxQvq5TI7w&riu=http%3a%2f%2fcliparting.com%2fwp-content%2fuploads%2f2016%2f10%2fThinking-clip-art-6.jpg&ehk=ESLre0SSYsS8xT%2fHMLydR90bPHl%2b9EEROXiDiyEjFJI%3d&risl=&pid=ImgRaw&r=0");
+    const [scoreImage, setScoreImage] = useState(scoreImageUrl);
     const [questions, setQuestions] = useState([]);
     const [showScore, setShowScore] = useState(false);
     
@@ -44,6 +44,14 @@ function Quiz() {
       setQuestions(randomizedQuestions);
     }, [data]);
 
+
+    function resetQuiz(){
+      setScoreImage(scoreImageUrl);
+      setShowScore(false);
+      setScore(0);
+      setQuestionsAnswered(0);
+    }
+
   return (
     <main className="h-screen w-screen pt-24 flex justify-between gap-2">
       <motion.div className="Image w-1/2 h-full fixed"
@@ -61,16 +69,21 @@ function Quiz() {
               initial={{opacity:0, x: "-40vw" }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ x: "100vw" }}
-              transition={{ duration: 0.5, delay: 0.5, type:"spring" }}
+              transition={{ duration: 0.5, delay: 1, type:"spring",
+                exit: {
+                  duration: "250ms",
+                  delay:0,
+                }
+               }}
               className="flex justify-center flex-col gap-4 items-center text-4xl pt-24"
             >
               <div>Your score is {score}</div>
               <div>
-                <a href="quiz">
-                  <button className="rounded-xl border border-black bg-yellow-200 p-2">
+                <Link to={""}>
+                  <button onClick={resetQuiz} className="rounded-xl border border-black bg-yellow-200 p-2">
                     Try Again?
                   </button>
-                </a>
+                </Link>
               </div>
               <img className="w-60 rounded-xl" src={scoreImage} alt="" />
             </motion.div>
@@ -78,10 +91,15 @@ function Quiz() {
             questions.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: "100vh" }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ x: "100vw" }}
-                transition={{ duration: 0.5, type: "spring" }}
+                exit={{ x: "70vw" }}
+                transition={{ duration: 0.5, type: "spring", delay: 1, 
+                  exit:{
+                    duration: "250ms",
+                    delay: 0,
+                  }
+                }}
               >
                 <Questions
                   question={item.question.text}
