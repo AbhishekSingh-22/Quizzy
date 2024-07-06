@@ -30,7 +30,7 @@ function Home() {
           >
           <Link to={"quiz"}>
           <button 
-          className='bg-yellow-200 text-black p-6 rounded-full text-xl hover:shadow-md hover:shadow-yellow-100 hover:-translate-y-2 transition-all'>Wanna Try Me ? <i className="fa-solid fa-arrow-right fa-bounce"></i></button>
+          className='bg-yellow-200 text-black p-6 rounded-full text-xl hover:shadow-md hover:shadow-yellow-100 hover:-translate-y-2 transition-all'>Take a Quiz <i className="fa-solid fa-arrow-right fa-bounce"></i></button>
           </Link>
           </motion.div>
         </div>
